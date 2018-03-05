@@ -1,0 +1,13 @@
+%YAML 1.1
+---
+version: '>=0.0.0'
+export: |
+
+    project "ProgramOptions"
+        kind "StaticLib"
+
+        zpm.export [[
+            includedirs "."
+            cppdialect "C++11"
+        ]]
+...
