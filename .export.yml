@@ -1,6 +1,6 @@
 %YAML 1.1
 ---
-version: '>=0.0.0'
+version: '>=0.0.0 || @head'
 export: |
 
     project "ProgramOptions"
