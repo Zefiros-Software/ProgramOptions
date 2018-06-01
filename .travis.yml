@@ -2,19 +2,23 @@ sudo: required
 language: generic
 matrix:
   include:
-    - os: linux
-      dist: trusty
-      env: VERSION=6
-    - os: linux
-      dist: trusty
-      env: VERSION=7
-    - os: linux
-      dist: trusty
-      env: VERSION=5
-    - os: osx
-      osx_image: xcode8
-      language: generic
+  - os: linux
+    dist: trusty
+    env: VERSION=6
+  - os: linux
+    dist: trusty
+    env: VERSION=7
+  - os: osx
+    osx_image: xcode9.2
+    language: generic
+global:
+  env:
+  - PROJECT=ProgramOptions
+  - PROJECT_TEMPLATE=default
 install:
-  - source /dev/stdin <<< "$(curl -s https://raw.githubusercontent.com/Zefiros-Software/ZPM/features/refactor/script/install-zpm.sh)"
+- source /dev/stdin <<< "$(curl -s https://raw.githubusercontent.com/Zefiros-Software/ZPM/dev/script/install-zpm.sh)"
 script:
-  - 'cd test && zpm run test-definition ProgramOptions'
+- cd test && zpm run test-definition ProgramOptions
+notifications:
+  slack:
+    secure: H0f7brCKubj4eWRq5mHczhcIzsCD81OAtZ1H3MTMwKn6cvuyCeWY+TIgcOLrJNRcNIIRyKe5thton+dFguKqUWN1CUFuQtDILVEl4CW5ZVlEZY86wG4HmyRjMOtVTBUP6PYq9rBS/RGkVZDts5mtYqxBVKvt54JUetO4jzdVWxw0maQkSbOKNlOJ66swoobAtGC4RZ6TyK/qmOQ9258IOU4X/zThEgxkADrPDmrcp/TMvhLxzv+JhJWXuFBn4/EaQR0gqYEHrGtVqUpp+Ej44o7UB/f3Q9LqmiEj+UXPKa9/aLtixxEaCfGuTJXfvN3Gi6kBJPkUmbrP2JrgaeroI8ATkFoxtwfvkooBDhZ/8lbXkxMB3wAv8CsRP29+LSxWAjzgeKOmxgaKvgdSU2Nn+EYy7Q14If2m56qVkf4N6jx/KdBRlRxIEitWwYa6UeJda/1RR8MBkY1h8iiSaSwSB9vsHNXQcpsylHXq1/pGBY1eJ4p/+WQqaPy1RdxNvfaQLdBR4DJQeCA9Y0HekPSdeFrY3LpZxmoj7+LGn0vKNMxhm0vv128krd+xrnfOpFr2n9JTLfPPn8WbgOqSQnEv40CI6SVGz31k16bJN3NV674lh2IYwxnr5oHrJW0CbX+MOco5jRq0YoIW3rl/e6cSHCSnjQMM0HLqWRjoPf2oU3g=
